@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+// import useAuth from '../hooks/useAuth';
+// import {  useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Dialog from '@mui/material/Dialog';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from '../api/axios';
@@ -21,11 +21,11 @@ function SimpleDialog(props) {
   const handleClose = () => {
     onClose(selectedValue);
   };
-  const { setAuth } = useAuth();
+//   const { setAuth } = useAuth();
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const from = location.state?.from?.pathname || "/";
 
   const userRef = useRef();
   const errRef = useRef();
@@ -33,18 +33,18 @@ function SimpleDialog(props) {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
+//   const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
+//   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [matchPwd, setMatchPwd] = useState('');
   const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+//   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+//   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
       userRef.current?.focus();
@@ -87,7 +87,7 @@ function SimpleDialog(props) {
           // TODO: remove console.logs before deployment
           console.log(JSON.stringify(response?.data));
           //console.log(JSON.stringify(response))
-          setSuccess(true);
+        //   setSuccess(true);
           //clear state and controlled inputs
           setUser('');
           setPwd('');
@@ -271,9 +271,9 @@ export default function Register() {
 
   return (
     <div>
-      <a className="radius8 lightBg" style={{ padding: "10px 15px" }} onClick={handleClickOpen}>
+      <button className="radius8 lightBg" style={{ padding: "10px 15px" }} onClick={handleClickOpen}>
         Sign Up
-      </a>
+      </button>
       <SimpleDialog
         // selectedValue={selectedValue}
         open={open}

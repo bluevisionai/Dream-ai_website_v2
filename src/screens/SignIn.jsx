@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Dialog from '@mui/material/Dialog';
 import { LockClosedIcon } from '@heroicons/react/20/solid'
@@ -140,9 +140,9 @@ function SimpleDialog(props) {
                         </div>
 
                         <div className="text-sm">
-                            <a href="" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            <button className="font-medium text-indigo-600 hover:text-indigo-500">
                                 Forgot your password?
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -198,9 +198,9 @@ export default function SimpleDialogDemo() {
 
   return (
     <div>
-      <a style={{ padding: "10px 30px 10px 0" }} onClick={handleClickOpen}>
+      <button style={{ padding: "10px 30px 10px 0" }} onClick={handleClickOpen}>
             Log in
-      </a>
+      </button>
       <SimpleDialog
         // selectedValue={selectedValue}
         open={open}
