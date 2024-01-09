@@ -98,17 +98,17 @@ const BtnWrapper = styled.div`
     margin: 0 auto;
   }
 `;
-const GreyDiv = styled.div`
-  width: 50%;
-  height: 700px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 0;
-  @media (max-width: 960px) {
-    display: none;
-  }
-`;
+// const GreyDiv = styled.div`
+//   width: 50%;
+//   height: 700px;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   z-index: 0;
+//   @media (max-width: 960px) {
+//     display: none;
+//   }
+// `;
 const ImageWrapper = styled.div`
   display: flex;
   top: 50px;
@@ -127,36 +127,36 @@ const Img = styled.img`
     object-fit: cover;
   }
 `;
-const QuoteWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 50px;
-  max-width: 330px;
-  padding: 30px;
-  z-index: 99;
-  @media (max-width: 960px) {
-    left: 20px;
-  }
-  @media (max-width: 560px) {
-    bottom: -50px;
-  }
-`;
-const QuotesWrapper = styled.div`
-  position: absolute;
-  left: -20px;
-  top: -10px;
-`;
-const DotsWrapper = styled.div`
-  position: absolute;
-  right: -100px;
-  bottom: 100px;
-  z-index: 2;
-  @media (max-width: 960px) {
-    right: 100px;
-  }
-  @media (max-width: 560px) {
-    display: none;
-  }
-`;
+// const QuoteWrapper = styled.div`
+//   position: absolute;
+//   left: 0;
+//   bottom: 50px;
+//   max-width: 330px;
+//   padding: 30px;
+//   z-index: 99;
+//   @media (max-width: 960px) {
+//     left: 20px;
+//   }
+//   @media (max-width: 560px) {
+//     bottom: -50px;
+//   }
+// `;
+// const QuotesWrapper = styled.div`
+//   position: absolute;
+//   left: -20px;
+//   top: -10px;
+// `;
+// const DotsWrapper = styled.div`
+//   position: absolute;
+//   right: -100px;
+//   bottom: 100px;
+//   z-index: 2;
+//   @media (max-width: 960px) {
+//     right: 100px;
+//   }
+//   @media (max-width: 560px) {
+//     display: none;
+//   }
+// `;
 
 

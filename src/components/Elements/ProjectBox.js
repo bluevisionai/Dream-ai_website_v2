@@ -31,13 +31,13 @@ const Wrapper = styled.div`
     padding-bottom: 10px;
   }
 `;
-const ImgBtn = styled.button`
-  background-color: transparent;
-  border: 0px;
-  outline: none;
-  padding: 0px;
-  margin: 0px;
-  :hover > img {
-    opacity: 0.5;
-  }
-`;
+// const ImgBtn = styled.button`
+//   background-color: transparent;
+//   border: 0px;
+//   outline: none;
+//   padding: 0px;
+//   margin: 0px;
+//   :hover > img {
+//     opacity: 0.5;
+//   }
+// `;
