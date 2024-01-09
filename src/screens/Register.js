@@ -1,112 +1,126 @@
-import * as React from 'react';
-import { useRef, useState, useEffect } from 'react';
-// import useAuth from '../hooks/useAuth';
-// import {  useNavigate, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Dialog from '@mui/material/Dialog';
+import React, { useRef, useState, useEffect } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
+import Dialog from "@material-ui/core/Dialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import useAuth from '../hooks/useAuth';
 import axios from '../api/axios';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+// const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = '/api/v1/auth/register';
 
-function SimpleDialog(props) {
-  const { onClose, selectedValue, open } = props;
+export default function App() {
+    const [open, setOpen] = React.useState(false);
 
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
-//   const { setAuth } = useAuth();
+    const handleClickToOpen = () => {
+        setOpen(true);
+    };
 
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const from = location.state?.from?.pathname || "/";
+    const handleToClose = () => {
+        setOpen(false);
+    };
 
-  const userRef = useRef();
-  const errRef = useRef();
+    const { setAuth } = useAuth();
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [validName, setValidName] = useState(false);
-//   const [userFocus, setUserFocus] = useState(false);
+    const userRef = useRef();
+    const errRef = useRef();
 
-  const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-//   const [pwdFocus, setPwdFocus] = useState(false);
+    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    const [validName, setValidName] = useState(false);
+    //   const [userFocus, setUserFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-//   const [matchFocus, setMatchFocus] = useState(false);
+    const [pwd, setPwd] = useState('');
+    //   const [validPwd, setValidPwd] = useState(false);
+    //   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState('');
-//   const [success, setSuccess] = useState(false);
+    const [matchPwd, setMatchPwd] = useState('');
+    //   const [validMatch, setValidMatch] = useState(false);
+    //   const [matchFocus, setMatchFocus] = useState(false);
 
-  useEffect(() => {
-      userRef.current?.focus();
-  }, [])
+    const [errMsg, setErrMsg] = useState('');
+    //   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-      setValidName(USER_REGEX.test(user));
-  }, [user])
+    useEffect(() => {
+        userRef.current?.focus();
+    }, [])
 
-  useEffect(() => {
-      setValidName(EMAIL_REGEX.test(email));
-  }, [email])
+    //   useEffect(() => {
+    //       setValidName(USER_REGEX.test(user));
+    //   }, [user])
 
-  useEffect(() => {
-      setValidPwd(PWD_REGEX.test(pwd));
-      setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd])
+    useEffect(() => {
+        setValidName(EMAIL_REGEX.test(email));
+    }, [email])
 
-  useEffect(() => {
-      setErrMsg('');
-  }, [user, email, pwd, matchPwd])
+    //   useEffect(() => {
+    //       setValidPwd(PWD_REGEX.test(pwd));
+    //       setValidMatch(pwd === matchPwd);
+    //   }, [pwd, matchPwd])
 
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-      // if button enabled with JS hack
-      const v1 = USER_REGEX.test(user);
-      const v2 = PWD_REGEX.test(pwd);
-      if (!v1 || !v2) {
-          setErrMsg("Invalid Entry");
-          return;
-      }
-      try {
-          const response = await axios.post(REGISTER_URL,
-              JSON.stringify({ user,email, pwd }),
-              {
-                  headers: { 'Content-Type': 'application/json' },
-                  withCredentials: true
-              }
-          );
-          // TODO: remove console.logs before deployment
-          console.log(JSON.stringify(response?.data));
-          //console.log(JSON.stringify(response))
-        //   setSuccess(true);
-          //clear state and controlled inputs
-          setUser('');
-          setPwd('');
-          setMatchPwd('');
-      } catch (err) {
-          if (!err?.response) {
-              setErrMsg('No Server Response');
-          } else if (err.response?.status === 409) {
-              setErrMsg('Username Taken');
-          } else {
-              setErrMsg('Registration Failed')
-          }
-          errRef.current?.focus();
-      }
-  }
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, email, pwd, matchPwd])
 
-  return (
-    <Dialog onClose={handleClose} open={open}>
-          <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // if button enabled with JS hack
+        //   const v1 = USER_REGEX.test(user);
+        //   const v2 = PWD_REGEX.test(pwd);
+        const role = process.env.REACT_APP_USER_ROLE;
+
+        //   if (!v1 || !v2) {
+        //       setErrMsg("Invalid Entry");
+        //       return;
+        //   }
+        try {
+            const response = await axios.post(REGISTER_URL,
+                JSON.stringify({ user,email, pwd, role }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                      withCredentials: true
+                }
+            );
+            // TODO: remove console.logs before deployment
+            // console.log(JSON.stringify(response?.data));
+            const accessToken = response?.data?.access_token;
+            // const roles = response?.data?.user?.role;
+            
+            setAuth({ accessToken });
+            //clear state and controlled inputs
+            setUser('');
+            setPwd('');
+            setMatchPwd('');
+            // handleToClose();
+            navigate(from, { replace: true });
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 409) {
+                setErrMsg('Username Taken');
+            } else {
+                setErrMsg('Registration Failed')
+            }
+            errRef.current?.focus();
+        }
+    }
+
+    return (
+        <div>
+            <button className="radius8 lightBg" style={{ padding: "10px 15px" }}
+                onClick={handleClickToOpen}>
+                Sign Up
+            </button>
+            <Dialog open={open} onClose={handleToClose} >
+                <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div className="w-full max-w-md space-y-8">
                     <div>
                         <img
@@ -158,8 +172,8 @@ function SimpleDialog(props) {
                             <div>
                                 <label htmlFor="password" className="sr-only">
                                     Password
-                                    <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                                    <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
+                                    {/* <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
+                                    <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} /> */}
                                 </label>
                                 <input
                                     id="password"
@@ -181,18 +195,23 @@ function SimpleDialog(props) {
                             <div>
                                 <label htmlFor="password" className="sr-only">
                                     Confirm Password:
-                                    <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                                    <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
+                                    {/* <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
+                                    <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} /> */}
                                 </label>
                                 <input
                                     id="cornfirm_password"
                                     name="cornfirm_password"
                                     type="password"
                                     // autoComplete="current-password"
+                                    value={matchPwd}
                                     required
                                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Confirm Password"
-                                    onChange={(e) => matchPwd(e.target.value)}
+                                    onChange={(e) => setMatchPwd(e.target.value)}
+                                    // aria-invalid={validMatch ? "false" : "true"}
+                                    // aria-describedby="confirmnote"
+                                    // onFocus={() => setMatchFocus(true)}
+                                    // onBlur={() => setMatchFocus(false)}
                                 />
                                 {/* <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                                     <FontAwesomeIcon icon={faInfoCircle} />
@@ -225,7 +244,7 @@ function SimpleDialog(props) {
                         <div>
                             <button 
                             // type="submit" 
-                            disabled={!validName || !validPwd || !validMatch ? true : false}
+                            // disabled={!validName || !validPwd || !validMatch ? true : false}
                             className="home-register button group relative flex w-full justify-center rounded-md border border-transparent bg-purple py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" >
                                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                     <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
@@ -240,45 +259,15 @@ function SimpleDialog(props) {
 
             <div className="mt-4 flex justify-end">
                 <button
+                    onClick={handleToClose}
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 "
-                    // onClick={closeModal}
                 >
                     Got it, thanks!
                 </button>
             </div>
-    </Dialog>
-  );
+            </Dialog>
+        </div>
+    );
 }
 
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-};
-
-export default function Register() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-    // setSelectedValue(value);
-  };
-
-  return (
-    <div>
-      <button className="radius8 lightBg" style={{ padding: "10px 15px" }} onClick={handleClickOpen}>
-        Sign Up
-      </button>
-      <SimpleDialog
-        // selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
-    </div>
-  );
-}

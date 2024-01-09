@@ -3,21 +3,19 @@ import styled from "styled-components";
 // Components
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage from "../../assets/img/Dreams ai logo.png";
-import BcackGroundImage from "../../assets/img/Sky.jpg";
-// import QuotesIcon from "../../assets/svg/Quotes";
-// import Dots from "../../assets/svg/Dots";
+import HeaderImage from "../../../../assets/img/header-img.png";
+import QuotesIcon from "../../../../assets/svg/Quotes";
+import Dots from "../../../../assets/svg/Dots";
 
 export default function Header() {
   return (
-    <>
-    <div style={{ backgroundImage: `url(${BcackGroundImage})` }}>
-      <Wrapper id="home" className="container flexSpaceCenter" >
+    <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
         <div>
-          <h1 className="extraBold font60">Interpret Your Dreams with AI</h1>
+          <h1 className="extraBold font60">We are Digital Agency.</h1>
           <HeaderP className="font13 semiBold">
-            Unlock the hidden meanings behind your dreams and discover potential lottery numbers
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           </HeaderP>
           <BtnWrapper>
             <FullButton title="Get Started" />
@@ -26,33 +24,30 @@ export default function Header() {
       </LeftSide>
       <RightSide>
         <ImageWrapper>
-          <Img className="" src={HeaderImage} alt="office" />
-          {/* <QuoteWrapper className="flexCenter darkBg radius8">
-      <QuotesWrapper>
-        <QuotesIcon />
-      </QuotesWrapper>
-      <div>
-        <p className="font15 whiteColor">
-          <em>Friends, such as we desire, are dreams and fables. Friendship demands the ability to do without it.</em>
-        </p>
-        <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Ralph Waldo Emerson</p>
-      </div>
-    </QuoteWrapper> */}
-          {/* <DotsWrapper>
+          <Img className="radius8" src={HeaderImage} alt="office" style={{zIndex: 9}} />
+          <QuoteWrapper className="flexCenter darkBg radius8">
+            <QuotesWrapper>
+              <QuotesIcon />
+            </QuotesWrapper>
+            <div>
+              <p className="font15 whiteColor">
+                <em>Friends, such as we desire, are dreams and fables. Friendship demands the ability to do without it.</em>
+              </p>
+              <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Ralph Waldo Emerson</p>
+            </div>
+          </QuoteWrapper>
+          <DotsWrapper>
             <Dots />
-          </DotsWrapper> */}
+          </DotsWrapper>
         </ImageWrapper>
-        {/* <GreyDiv className="lightBg"></GreyDiv> */}
+        <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>
     </Wrapper>
-    </div>
-    </>
   );
 }
 
 
 const Wrapper = styled.section`
-  background-image: url${BcackGroundImage}
   padding-top: 80px;
   width: 100%;
   min-height: 840px;
@@ -74,7 +69,7 @@ const LeftSide = styled.div`
   }
 `;
 const RightSide = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100%;
   @media (max-width: 960px) {
     width: 100%;
@@ -99,7 +94,7 @@ const BtnWrapper = styled.div`
   }
 `;
 const GreyDiv = styled.div`
-  width: 50%;
+  width: 30%;
   height: 700px;
   position: absolute;
   top: 0;
@@ -111,7 +106,6 @@ const GreyDiv = styled.div`
 `;
 const ImageWrapper = styled.div`
   display: flex;
-  top: 50px;
   justify-content: flex-end;
   position: relative;
   z-index: 9;
@@ -122,9 +116,8 @@ const ImageWrapper = styled.div`
 `;
 const Img = styled.img`
   @media (max-width: 560px) {
-    width: 100px;
-    height: 100%;
-    object-fit: cover;
+    width: 80%;
+    height: auto;
   }
 `;
 const QuoteWrapper = styled.div`

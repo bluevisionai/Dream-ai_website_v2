@@ -9,60 +9,55 @@ export default function Pricing() {
       <div className="whiteBg">
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Check Our Pricing</h1>
+            <h1 className="font40 extraBold">Choose Your Plan</h1>
             <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+              Select the plan that suits your dream interpretation needs
             </p>
           </HeaderInfo>
           <TablesWrapper className="flexSpaceNull">
             <TableBox>
               <PricingTable
                 icon="roller"
-                price="$29,99/mo"
-                title="Starter"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+                price="$0,00/mo"
+                title="Free"
+                text="Access basic dream interpretation features"
                 offers={[
-                  { name: "Product Offer", cheked: true },
-                  { name: "Offer", cheked: true },
-                  { name: "Product Offer #2", cheked: false },
-                  { name: "Product", cheked: false },
-                  { name: "Product Offer", cheked: false },
+                  { name: "Interpretation of up to 4 dreams per month", cheked: true },
+                  { name: "Access to dream dictionary", cheked: true },
+                  { name: "Receive general dream analysis", cheked: true },
+                  { name: "Access to lottery number predictions", cheked: true },
                 ]}
-                action={() => alert("clicked")}
+                
               />
             </TableBox>
             <TableBox>
               <PricingTable
                 icon="monitor"
-                price="$49,99/mo"
+                price="$9,99/mo"
                 title="Basic"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+                text="Unlock more dream interpretation features"
                 offers={[
-                  { name: "Product Offer", cheked: true },
-                  { name: "Offer", cheked: true },
-                  { name: "Product Offer #2", cheked: true },
-                  { name: "Product", cheked: true },
-                  { name: "Product Offer", cheked: false },
+                  { name: "Interpretation of up to 10 dreams per month", cheked: true },
+                  { name: "Access to dream dictionary", cheked: true },
+                  { name: "Receive general dream analysis", cheked: true },
+                  { name: "Access to lottery number predictions", cheked: true },
                 ]}
-                action={() => alert("clicked")}
+                
               />
             </TableBox>
             <TableBox>
               <PricingTable
                 icon="browser"
-                price="$59,99/mo"
+                price="$14,99/mo"
                 title="Golden"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+                text="Get the ultimate dream interpretation experience"
                 offers={[
-                  { name: "Product Offer", cheked: true },
-                  { name: "Offer", cheked: true },
-                  { name: "Product Offer #2", cheked: true },
-                  { name: "Product", cheked: true },
-                  { name: "Product Offer", cheked: true },
+                  { name: "Unlimited dream interpretation", cheked: true },
+                  { name: "Access to dream dictionary", cheked: true },
+                  { name: "Receive general dream analysis", cheked: true },
+                  { name: "Access to lottery number predictions", cheked: true },
                 ]}
-                action={() => alert("clicked")}
+                
               />
             </TableBox>
           </TablesWrapper>

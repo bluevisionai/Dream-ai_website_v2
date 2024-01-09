@@ -2,80 +2,86 @@ import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Dialog from '@mui/material/Dialog';
 import { LockClosedIcon } from '@heroicons/react/20/solid'
+import Dialog from "@material-ui/core/Dialog";
+// import Button from "@material-ui/core/Button";
 
 import axios from '../api/axios';
-const LOGIN_URL = '/auth';
+const LOGIN_URL = '/api/v1/auth/login';
 
-function SimpleDialog(props) {
-  const { onClose, selectedValue, open } = props;
 
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
-  const { setAuth } = useAuth();
+export default function SignIn() {
+    const [open, setOpen] = React.useState(false);
+ 
+    const handleClickToOpen = () => {
+        setOpen(true);
+    };
+ 
+    const handleToClose = () => {
+        setOpen(false);
+    };
+ 
+    const { setAuth } = useAuth();
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+  
+    const userRef = useRef();
+    const errRef = useRef();
+  
+    const [email, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+  
+    useEffect(() => {
+        userRef.current?.focus();
+    }, [])
+  
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, pwd])
+  
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+  
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ email, pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(response?.data?.accessToken);
+            const accessToken = response?.data?.accessToken;
+            
+            setAuth({ accessToken });
+            setUser('');
+            setPwd('');
+            navigate(from, { replace: true });
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current?.focus();
+        }
+    }
 
-  const userRef = useRef();
-  const errRef = useRef();
-
-  const [email, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
-  const [errMsg, setErrMsg] = useState('');
-
-  useEffect(() => {
-      userRef.current?.focus();
-  }, [])
-
-  useEffect(() => {
-      setErrMsg('');
-  }, [email, pwd])
-
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-
-      try {
-          const response = await axios.post(LOGIN_URL,
-              JSON.stringify({ email, pwd }),
-              {
-                  headers: { 'Content-Type': 'application/json' },
-                  withCredentials: true
-              }
-          );
-          console.log(JSON.stringify(response?.data));
-          //console.log(JSON.stringify(response));
-          const accessToken = response?.data?.accessToken;
-          const roles = response?.data?.roles;
-          setAuth({ email, pwd, roles, accessToken });
-          setUser('');
-          setPwd('');
-          navigate(from, { replace: true });
-      } catch (err) {
-          if (!err?.response) {
-              setErrMsg('No Server Response');
-          } else if (err.response?.status === 400) {
-              setErrMsg('Missing Username or Password');
-          } else if (err.response?.status === 401) {
-              setErrMsg('Unauthorized');
-          } else {
-              setErrMsg('Login Failed');
-          }
-          errRef.current?.focus();
-      }
-  }
-
-//   const handleListItemClick = (value) => {
-//     onClose(value);
-//   };
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    return (
+        <div>
+        <button  style={{ padding: "10px 15px" }}
+            onClick={handleClickToOpen}>
+            Sign In
+        </button>
+            <Dialog open={open} onClose={handleToClose}>
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div>
                     <img
@@ -127,17 +133,19 @@ function SimpleDialog(props) {
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center">
+                        {/* <div className="flex items-center">
                             <input
-                                id="remember-me"
+                                id="persist"
                                 name="remember-me"
                                 type="checkbox"
+                                onChange={togglePersist}
+                                checked={persist}
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                             />
                             <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                                 Remember me
                             </label>
-                        </div>
+                        </div> */}
 
                         <div className="text-sm">
                             <button className="font-medium text-indigo-600 hover:text-indigo-500">
@@ -169,43 +177,13 @@ function SimpleDialog(props) {
             <button
                 type="button"
                 className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                // onClick={closeModal}
+                onClick={handleToClose}
             >
                 Got it, thanks!
             </button>
         </div>
-    </Dialog>
-  );
-}
 
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-};
-
-export default function SimpleDialogDemo() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-    // setSelectedValue(value);
-  };
-
-  return (
-    <div>
-      <button style={{ padding: "10px 30px 10px 0" }} onClick={handleClickOpen}>
-            Log in
-      </button>
-      <SimpleDialog
-        // selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
-    </div>
-  );
+            </Dialog>
+        </div>
+    );
 }
