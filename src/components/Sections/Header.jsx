@@ -16,7 +16,7 @@ export default function Header() {
       <LeftSide className="flexCenter">
         <div>
           <h1 className="extraBold font60">Interpret Your Dreams with AI</h1>
-          <HeaderP className="font13 semiBold">
+          <HeaderP className="font14 semiBold">
             Unlock the hidden meanings behind your dreams and discover potential lottery numbers
           </HeaderP>
           <BtnWrapper>
