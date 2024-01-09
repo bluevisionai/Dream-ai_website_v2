@@ -143,6 +143,7 @@ const Advertising = styled.div`
 // `;
 const AddLeft = styled.div`
   position: relative;
+  padding-right: 30px;
   width: 50%;
   p {
     max-width: 475px;
@@ -162,6 +163,7 @@ const AddLeft = styled.div`
 `;
 const AddRight = styled.div`
   width: 50%;
+  padding-left: 30px;
   @media (max-width: 860px) {
     width: 80%;
     order: 2;
