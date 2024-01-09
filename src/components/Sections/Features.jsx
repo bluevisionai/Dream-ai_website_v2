@@ -27,30 +27,34 @@ export default function Features() {
 			</p>
 			</HeaderInfo>
 			<ServiceBoxRow className="flex">
-			<ServiceBoxWrapper>
-				<ServiceBox
-				icon="roller"
-				title="Dream Interpretation"
-				subtitle="Get accurate interpretations of your dreams using advanced AI algorithms."
-				/>
-			</ServiceBoxWrapper>
-			<ServiceBoxWrapper>
-				<ServiceBox
-				icon="monitor"
-				title="Lottery Number Prediction"
-				subtitle="Receive potential lottery numbers based on the analysis of your dream interpretations."
-				/>
-			</ServiceBoxWrapper>
-			<ServiceBoxWrapper>
-				<ServiceBox
-				icon="browser"
-				title="Development"
-				subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
-				/>
-			</ServiceBoxWrapper>
-			<ServiceBoxWrapper>
-				<ServiceBox icon="printer" title="Print" subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
-			</ServiceBoxWrapper>
+				<ServiceBoxWrapper>
+					<ServiceBox
+						// icon="roller"
+						title="Dream Interpretation"
+						subtitle="Get accurate interpretations of your dreams using advanced AI algorithms."
+					/>
+				</ServiceBoxWrapper>
+				<ServiceBoxWrapper>
+					<ServiceBox
+						// icon="monitor"
+						title="Lottery Number Prediction"
+						subtitle="Receive potential lottery numbers based on the analysis of your dream interpretations."
+					/>
+				</ServiceBoxWrapper>
+				<ServiceBoxWrapper>
+					<ServiceBox
+						// icon="browser"
+						title="Development"
+						subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+					/>
+				</ServiceBoxWrapper>
+				<ServiceBoxWrapper>
+					<ServiceBox 
+						// icon="printer" 
+						title="Print" 
+						subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." 
+					/>
+				</ServiceBoxWrapper>
 			</ServiceBoxRow>
 		</div>
 		<div className="lightBg">

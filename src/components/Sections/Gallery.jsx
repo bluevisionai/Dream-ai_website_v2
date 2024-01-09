@@ -88,7 +88,7 @@ export default function Gallery() {
           <Advertising className="flexSpaceCenter">
             <AddLeft>
               <AddLeftInner>
-                <ImgWrapper className="flexCenter">
+                <ImgWrapper className="flexCenter radius8">
                   <Img className="radius8" src={Laptop} alt="add" />
                 </ImgWrapper>
               </AddLeftInner>
