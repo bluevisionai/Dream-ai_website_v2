@@ -10,7 +10,7 @@ import ProjectBox from "../Elements/ProjectBox";
 // import ProjectImg4 from "../../assets/img/projects/4.png";
 // import ProjectImg5 from "../../assets/img/projects/5.png";
 // import ProjectImg6 from "../../assets/img/projects/6.png";
-import AddImage2 from "../../assets/img/add/add2.png";
+import Laptop from "../../assets/img/Dreams AI - Logo.png";
 
 export default function Gallery() {
   return (
@@ -89,7 +89,7 @@ export default function Gallery() {
             <AddLeft>
               <AddLeftInner>
                 <ImgWrapper className="flexCenter">
-                  <img className="radius8" src={AddImage2} alt="add" />
+                  <Img className="radius8" src={Laptop} alt="add" />
                 </ImgWrapper>
               </AddLeftInner>
             </AddLeft>
@@ -99,14 +99,14 @@ export default function Gallery() {
               <p className="font12">
               Discover the power of artificial intelligence in interpreting dreams and predicting lottery numbers.
               </p>
-              <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0" }}>
-                {/* <div style={{ width: "190px" }}>
+              {/* <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0" }}>
+                <div style={{ width: "190px" }}>
                   <FullButton title="Get Started" action={() => alert("clicked")} />
                 </div>
                 <div style={{ width: "190px", marginLeft: "15px" }}>
                   <FullButton title="Contact Us" action={() => alert("clicked")} border />
-                </div> */}
-              </ButtonsRow>
+                </div>
+              </ButtonsRow> */}
             </AddRight>
           </Advertising>
         </div>
@@ -136,11 +136,11 @@ const Advertising = styled.div`
     margin: 80px 0 0px 0;
   }
 `;
-const ButtonsRow = styled.div`
-  @media (max-width: 860px) {
-    justify-content: space-between;
-  }
-`;
+// const ButtonsRow = styled.div`
+//   @media (max-width: 860px) {
+//     justify-content: space-between;
+//   }
+// `;
 const AddLeft = styled.div`
   position: relative;
   width: 50%;
@@ -170,7 +170,7 @@ const AddRight = styled.div`
 const AddLeftInner = styled.div`
   width: 100%;
   position: absolute;
-  top: -300px;
+  top: -200px;
   left: 0;
   @media (max-width: 1190px) {
     top: -250px;
@@ -186,13 +186,24 @@ const AddLeftInner = styled.div`
   }
 `;
 const ImgWrapper = styled.div`
+  background-color: gray;
   width: 100%;
-  padding: 0 15%;
+  height: 400px;
+  padding: 0 0;
   img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
   @media (max-width: 400px) {
     padding: 0;
+  }
+`;
+const Img = styled.img`
+  height: 400px;
+  object-fit: cover;
+  @media (max-width: 560px) {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
   }
 `;
