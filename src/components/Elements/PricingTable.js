@@ -3,42 +3,51 @@ import styled from "styled-components";
 // Components
 // import FullButton from "../Buttons/FullButton";
 // Assets
-import RollerIcon from "../../assets/svg/Services/RollerIcon";
-import MonitorIcon from "../../assets/svg/Services/MonitorIcon";
-import BrowserIcon from "../../assets/svg/Services/BrowserIcon";
-import PrinterIcon from "../../assets/svg/Services/PrinterIcon";
+// import RollerIcon from "../../assets/svg/Services/RollerIcon";
+// import MonitorIcon from "../../assets/svg/Services/MonitorIcon";
+// import BrowserIcon from "../../assets/svg/Services/BrowserIcon";
+// import PrinterIcon from "../../assets/svg/Services/PrinterIcon";
 import CheckMark from "../../assets/svg/Checkmark";
 
+
+import pink from "../../assets/img/pink.jpg";
+import blue from "../../assets/img/blue.jpg";
+import black from "../../assets/img/black.jpg";
+
 export default function PricingTable({ icon, price, title, text,  offers, action }) {
-  let getIcon;
+  // let getIcon;
+  let backGround;
 
   switch (icon) {
     case "roller":
-      getIcon = <RollerIcon />;
+      // getIcon = <RollerIcon />;
+      backGround = pink;
       break;
     case "monitor":
-      getIcon = <MonitorIcon />;
+      // getIcon = <MonitorIcon />;
+      backGround = blue;
       break;
     case "browser":
-      getIcon = <BrowserIcon />;
+      // getIcon = <BrowserIcon />;
+      backGround = black;
       break;
     case "printer":
-      getIcon = <PrinterIcon />;
+      // getIcon = <PrinterIcon />;
       break;
     default:
-      getIcon = <RollerIcon />;
+      // getIcon = <RollerIcon />;
       break;
   }
 
   return (
-    <Wrapper className="whiteBg radius8 shadow">
+    <Wrapper className="whiteBg radius8 shadow"  style={{backgroundImage: `url("${backGround}")`, objectFit: `cover`}} >
       <div className="flexSpaceCenter">
-        {getIcon}
+        {/* {getIcon} */}
         <p className="font30 extraBold">{price}</p>
       </div>
       <div style={{ margin: "30px 0" }}>
         <h4 className="font30 extraBold">{title}</h4>
-        <p className="font13">{text}</p>
+        <p className="font14">{text}</p>
       </div>
       <div>
         {offers
@@ -53,7 +62,7 @@ export default function PricingTable({ icon, price, title, text,  offers, action
                     <div style={{ minWidth: "20px" }}></div>
                   )}
                 </div>
-                <p className="font20 extraBold">{item.name}</p>
+                <p className="font21 extraBold">{item.name}</p>
               </div>
             ))
           : null}
@@ -66,6 +75,7 @@ export default function PricingTable({ icon, price, title, text,  offers, action
 }
 
 const Wrapper = styled.div`
+  
   width: 100%;
   text-align: left;
   padding: 20px 30px;

@@ -160,7 +160,8 @@ html, body, div, span, applet, object, iframe,
     font-size: 0.813rem;
   }
   .font14 {
-    font-size: 0.875rem;
+    font-size: 0.82rem;
+    color: #6556FF;
   }
   .font15 {
     font-size: 0.938rem;
@@ -171,17 +172,23 @@ html, body, div, span, applet, object, iframe,
   .font20 {
     font-size: 1.25rem;
   }
+  .font21 {
+    font-size: 1.25rem;
+    color: #6556FF;
+  }
   .font25 {
     font-size: 1.563rem;
   }
   .font30 {
     font-size: 1.875rem;
+    color: #6556FF;
   }
   .font40 {
     font-size: 2.5rem;
   }
   .font60 {
     font-size: 3.75rem;
+    color: #6556FF;
     line-height: 4.5rem;
   }
   @media only screen and (max-width: 859px) {
