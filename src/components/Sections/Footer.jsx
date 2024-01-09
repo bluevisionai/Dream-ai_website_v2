@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
+// import LogoImg from "../../assets/svg/Logo";
+import Log from "../../assets/img/Dreams AI logo - White.png";
 
 export default function Contact() {
 
@@ -16,13 +17,14 @@ export default function Contact() {
         <div className="container">
           <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
             <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>
-              <LogoImg />
-              <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
+              {/* <LogoImg /> */}
+              <Img className="" src={Log} alt="office" />
+              {/* <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
                 Fanatic
-              </h1>
+              </h1> */}
             </Link>
             <StyleP className="whiteColor font13">
-              © {getCurrentYear()} - <span className="purpleColor font13">Fanatic</span> All Right Reserved
+              © {getCurrentYear()} - <span className="purpleColor font13">Dreams AI</span> All Right Reserved
             </StyleP>
 
             <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
@@ -47,4 +49,7 @@ const StyleP = styled.p`
   @media (max-width: 550px) {
     margin: 20px 0;
   }
+`;
+const Img = styled.img`
+  width:80px; 
 `;
