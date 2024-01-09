@@ -6,7 +6,7 @@ export default function Loader({ tag, title, text, action, author }) {
   return (
     
     <Wrapper className="whiteBg radius8 shadow">
-        <CircleLoader color="#36d7b7" />
+        <CircleLoader color="#6556FF" />
     </Wrapper>
     
   );
