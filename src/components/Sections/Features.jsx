@@ -44,15 +44,15 @@ export default function Features() {
 				<ServiceBoxWrapper>
 					<ServiceBox
 						// icon="browser"
-						title="Development"
-						subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+						title="Personalized Algorithms"
+						subtitle="Our AI crafts personalized algorithms, mapping your unique dream patterns to potential winning combinations. Your dreams become a bespoke source of inspiration for your next lottery play."
 					/>
 				</ServiceBoxWrapper>
 				<ServiceBoxWrapper>
 					<ServiceBox 
 						// icon="printer" 
-						title="Print" 
-						subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." 
+						title="Probabilistic Magic" 
+						subtitle="The AI, armed with probabilistic models, generates number sets with enhanced winning potential. Your dreams become a magical ingredient in our algorithmic cauldron of luck!" 
 					/>
 				</ServiceBoxWrapper>
 			</ServiceBoxRow>
@@ -62,7 +62,7 @@ export default function Features() {
 			<Advertising className="flexSpaceCenter">
 				<AddLeft>
 				{/* <h4 className="font15 semiBold">A few words about company</h4> */}
-				<h2 className="font40 extraBold">Experience Dream Interpretation Like Never Beforey</h2>
+				<h2 className="font40 extraBold">Experience Dream Interpretation Like Never Before</h2>
 				<p className="font12">
 					Our advanced AI technology analyzes your dreams to provide accurate interpretations and even suggests potential lottery numbers based on dream symbolism. Sign up now to start exploring the hidden meanings of your dreams.
 				</p>
