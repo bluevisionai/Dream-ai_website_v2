@@ -29,7 +29,8 @@ const RequireAuth = ({allowedRoles}) => {
         roles.find(role => allowedRoles?.includes(role))
             ? <Outlet />
             :auth?.accessToken
-                ?  <Navigate to="/unauthorized" state={{ from: location }} replace />
+                ?  <Outlet />
+                // ?  <Navigate to="/unauthorized" state={{ from: location }} replace />
                 : <Navigate to="/home" state={{ from: location }} replace />
     );
 }
