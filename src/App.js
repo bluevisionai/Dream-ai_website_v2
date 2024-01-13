@@ -1,15 +1,20 @@
-// import React from "react";
-// import { Helmet } from "react-helmet";
-// import { Helmet, HelmetProvider } from 'react-helmet-async';
+import './assets/libs/boxicons-2.1.1/css/boxicons.min.css'
+import './scss/App.scss'
 
 // Screens
-import Layout from "./Layout.js";
-import Landing from "./screens/Landing.js";
-import Dashboard from "./screens/dashboard/Dashboard.js";
-import NotFound from "./screens/NotFound.js";
-import RequireAuth from "./context/RequireAuth.js";
-import PersistLogin from "./context/PersistLogin.js";
+import Layout from "./Layout";
 import { Route, Routes } from "react-router-dom";
+
+
+import Landing from "./screens/Landing";
+import Dashboard from "./screens/dashboard/Dashboard";
+import History from "./screens/dashboard/History";
+import Profile from "./screens/dashboard/Profile";
+import MainLayout from "./screens/dashboard/layout/MainLayout";
+import NotFound from "./screens/NotFound.js";
+import RequireAuth from "./context/RequireAuth";
+import PersistLogin from "./context/PersistLogin";
+import Blank from './screens/dashboard/Blank'
 
 const ROLES = {
 	'User': process.env.REACT_APP_USER_ROLE,
@@ -29,7 +34,14 @@ export default function App() {
 				{/* we want to protect these routes */}
 				<Route element={<PersistLogin />}>
 					<Route element={<RequireAuth  allowedRoles={[ROLES.User]}/>}>
-						<Route path="/" element={<Dashboard />} />
+						<Route path="/" element={<MainLayout />}>
+							<Route index element={<Dashboard />} />
+							<Route path="History" element={<History />} />
+							<Route path="products" element={<Blank />} />
+							<Route path="profile" element={<Profile />} />
+							<Route path="settings" element={<Blank />} />
+							<Route path="stats" element={<Blank />} />
+						</Route>
 					</Route>
 				</Route>
 				

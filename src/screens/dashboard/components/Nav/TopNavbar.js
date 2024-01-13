@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Backdrop from "../Elements/Backdrop";
 // Assets
-import LogoIcon from "../../../../assets/svg/Logo";
+import Log from "../../../../assets/img/Dreams AI logo - Black.png";
 import BurgerIcon from "../../../../assets/svg/BurgerIcon";
 
 import SignOut from "../../../../hooks/SignOut";
@@ -37,15 +37,12 @@ export default function TopNavbar() {
 		<Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
 			<NavInner className="container flexSpaceCenter">
 			<Link className="pointer flexNullCenter" to="home" smooth={true}>
-				<LogoIcon />
-				<h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
-				fanatic
-				</h1>
+				<Img className="" src={Log} alt="office" />
 			</Link>
 			<BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
 				<BurgerIcon />
 			</BurderWrapper>
-			<UlWrapper className="flexNullCenter">
+			{/* <UlWrapper className="flexNullCenter">
 				<li className="semiBold font15 pointer">
 				<Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
 					Home
@@ -76,7 +73,7 @@ export default function TopNavbar() {
 					Contact
 				</Link>
 				</li>
-			</UlWrapper>
+			</UlWrapper> */}
 			<UlWrapperRight className="flexNullCenter">
 				<li className="semiBold font15 pointer">
 				
@@ -114,16 +111,17 @@ display: none;
 	display: block;
 }
 `;
-const UlWrapper = styled.ul`
-display: flex;
-@media (max-width: 760px) {
-	display: none;
-}
-`;
+// const UlWrapper = styled.ul`
+// display: flex;
+// @media (max-width: 760px) {
+// 	display: none;
+// }
+// `;
 const UlWrapperRight = styled.ul`
 @media (max-width: 760px) {
 	display: none;
 }
 `;
-
-
+const Img = styled.img`
+  width:80px; 
+`;

@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import CircleLoader from "react-spinners/CircleLoader";
 
-export default function Loader({ tag, title, text, action, author }) {
+export default function Loader() {
   return (
     
-    <Wrapper className="whiteBg radius8 shadow">
+    <Wrapper >
         <CircleLoader color="#6556FF" />
     </Wrapper>
     
@@ -13,7 +13,7 @@ export default function Loader({ tag, title, text, action, author }) {
 }
 
 const Wrapper = styled.div`
-    height: 100vh; /* Magic here */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
