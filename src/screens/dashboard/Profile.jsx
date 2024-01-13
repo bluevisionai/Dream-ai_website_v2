@@ -1,15 +1,37 @@
 import * as React from 'react';
 import {
-    AspectRatio, Box, Button, Divider, FormControl, FormLabel, Input, IconButton, Stack,
-    Select, Option, Typography, Tab, Tabs, TabPanel, TabList, tabClasses, Card, CardActions, CardOverflow
+    Box, Button, Divider, FormControl, FormLabel, Input, Stack, CardContent, Grid,
+    Select, Option, Typography, Tab, Tabs, TabPanel, TabList, tabClasses, Card, CardActions, CardOverflow,
+    Table,
 } from '@mui/joy';
+import { Container } from '@mui/system';
 
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 
 export default function MyProfile() {
+
+    const StartNow = (price, color) => {
+        if (price === "$0.00 p/m") {
+            return 
+        }
+
+        return (
+            <>
+                <Button
+                    variant="outlined"
+                    color={color}
+                    endDecorator={<KeyboardArrowRight />}
+                >
+                    Start now
+                </Button>
+            </>
+        )
+
+    };
+
     return (
         <Box sx={{ flex: 1, width: '100%' }}>
             <Box
@@ -45,9 +67,6 @@ export default function MyProfile() {
                         <Tab disableIndicator value={1}>
                             Security
                         </Tab>
-                        {/* <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={2}>
-                        Plan
-                        </Tab> */}
                         <Tab disableIndicator value={2}>
                             Billing
                         </Tab>
@@ -64,209 +83,138 @@ export default function MyProfile() {
                             }}
                         >
                             <Card>
-                            <Box sx={{ mb: 1 }}>
-                                <Typography level="title-md">Personal info</Typography>
-                                <Typography level="body-sm">
-                                Customize how your profile information will apper to the networks.
-                                </Typography>
-                            </Box>
-                            <Divider />
-                            <Stack
-                                direction="row"
-                                spacing={3}
-                                sx={{ display: { xs: 'none', md: 'flex' }, my: 1 }}
-                            >
-                                <Stack direction="column" spacing={1}>
-                                <AspectRatio
-                                    ratio="1"
-                                    maxHeight={200}
-                                    sx={{ flex: 1, minWidth: 120, borderRadius: '100%' }}
+                                <Box sx={{ mb: 1 }}>
+                                    <Typography level="title-md">Personal info</Typography>
+                                    <Typography level="body-sm">
+                                    Customize how your profile information will apper to the networks.
+                                    </Typography>
+                                </Box>
+                                <Divider />
+                                <Stack
+                                    direction="row"
+                                    spacing={3}
+                                    sx={{ display: { xs: 'none', md: 'flex' }, my: 1 }}
                                 >
-                                    <img
-                                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                    srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                    loading="lazy"
-                                    alt=""
-                                    />
-                                </AspectRatio>
-                                <IconButton
-                                    aria-label="upload new picture"
-                                    size="sm"
-                                    variant="outlined"
-                                    color="neutral"
-                                    sx={{
-                                    bgcolor: 'background.body',
-                                    position: 'absolute',
-                                    zIndex: 2,
-                                    borderRadius: '50%',
-                                    left: 100,
-                                    top: 170,
-                                    boxShadow: 'sm',
-                                    }}
+                                    <Stack spacing={2} sx={{ flexGrow: 1 }}>
+                                        <div>
+                                        <Stack spacing={2}>
+                                            <FormLabel>Name</FormLabel>
+                                            <FormControl sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }} >
+                                                <Input size="sm" placeholder="First name" />
+                                                <Input size="sm" placeholder="Last name" sx={{ flexGrow: 1 }} />
+                                            </FormControl>
+                                        </Stack>
+                                        <Stack direction="row" spacing={2}>
+                                            <FormControl>
+                                                <FormLabel>Role</FormLabel>
+                                                <Input size="sm" defaultValue="UI Developer" />
+                                            </FormControl>
+                                            <FormControl sx={{ flexGrow: 1 }}>
+                                                <FormLabel>Email</FormLabel>
+                                                <Input
+                                                    size="sm"
+                                                    type="email"
+                                                    startDecorator={<EmailRoundedIcon />}
+                                                    placeholder="email"
+                                                    defaultValue="siriwatk@test.com"
+                                                    sx={{ flexGrow: 1 }}
+                                                />
+                                            </FormControl>
+                                        </Stack>
+                                        </div>
+                                        <div>
+                                            <FormControl sx={{ display: { sm: 'contents' } }}>
+                                            <FormLabel>Timezone</FormLabel>
+                                            <Select
+                                                size="sm"
+                                                startDecorator={<AccessTimeFilledRoundedIcon />}
+                                                defaultValue="1"
+                                            >
+                                                <Option value="1">
+                                                Indochina Time (Bangkok){' '}
+                                                <Typography textColor="text.tertiary" ml={0.5}>
+                                                    — GMT+07:00
+                                                </Typography>
+                                                </Option>
+                                                <Option value="2">
+                                                Indochina Time (Ho Chi Minh City){' '}
+                                                <Typography textColor="text.tertiary" ml={0.5}>
+                                                    — GMT+07:00
+                                                </Typography>
+                                                </Option>
+                                            </Select>
+                                            </FormControl>
+                                        </div>
+                                    </Stack>
+                                </Stack>
+                                <Stack
+                                    direction="column"
+                                    spacing={2}
+                                    sx={{ display: { xs: 'flex', md: 'none' }, my: 1 }}
                                 >
-                                    <EditRoundedIcon />
-                                </IconButton>
-                                </Stack>
-                                <Stack spacing={2} sx={{ flexGrow: 1 }}>
-                                <Stack spacing={1}>
-                                    <FormLabel>Name</FormLabel>
-                                    <FormControl
-                                    sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }}
-                                    >
-                                    <Input size="sm" placeholder="First name" />
-                                    <Input size="sm" placeholder="Last name" sx={{ flexGrow: 1 }} />
-                                    </FormControl>
-                                </Stack>
-                                <Stack direction="row" spacing={2}>
+                                    <Stack direction="row" spacing={2}>
+                                        <Stack spacing={1} sx={{ flexGrow: 1 }}>
+                                            <FormLabel>Name</FormLabel>
+                                            <FormControl
+                                            sx={{
+                                                display: {
+                                                sm: 'flex-column',
+                                                md: 'flex-row',
+                                                },
+                                                gap: 2,
+                                            }}
+                                            >
+                                            <Input size="sm" placeholder="First name" />
+                                            <Input size="sm" placeholder="Last name" />
+                                            </FormControl>
+                                        </Stack>
+                                    </Stack>
                                     <FormControl>
-                                    <FormLabel>Role</FormLabel>
-                                    <Input size="sm" defaultValue="UI Developer" />
+                                        <FormLabel>Role</FormLabel>
+                                        <Input size="sm" defaultValue="UI Developer" />
                                     </FormControl>
                                     <FormControl sx={{ flexGrow: 1 }}>
-                                    <FormLabel>Email</FormLabel>
-                                    <Input
-                                        size="sm"
-                                        type="email"
-                                        startDecorator={<EmailRoundedIcon />}
-                                        placeholder="email"
-                                        defaultValue="siriwatk@test.com"
-                                        sx={{ flexGrow: 1 }}
-                                    />
+                                        <FormLabel>Email</FormLabel>
+                                        <Input
+                                            size="sm"
+                                            type="email"
+                                            startDecorator={<EmailRoundedIcon />}
+                                            placeholder="email"
+                                            defaultValue="siriwatk@test.com"
+                                            sx={{ flexGrow: 1 }}
+                                        />
                                     </FormControl>
-                                </Stack>
-                                <div>
-                                    {/* <CountrySelector /> */}
-                                </div>
-                                <div>
+                                    <div>
                                     <FormControl sx={{ display: { sm: 'contents' } }}>
-                                    <FormLabel>Timezone</FormLabel>
-                                    <Select
+                                        <FormLabel>Timezone</FormLabel>
+                                        <Select
                                         size="sm"
                                         startDecorator={<AccessTimeFilledRoundedIcon />}
                                         defaultValue="1"
-                                    >
+                                        >
                                         <Option value="1">
-                                        Indochina Time (Bangkok){' '}
-                                        <Typography textColor="text.tertiary" ml={0.5}>
+                                            Indochina Time (Bangkok){' '}
+                                            <Typography textColor="text.tertiary" ml={0.5}>
                                             — GMT+07:00
-                                        </Typography>
+                                            </Typography>
                                         </Option>
                                         <Option value="2">
-                                        Indochina Time (Ho Chi Minh City){' '}
-                                        <Typography textColor="text.tertiary" ml={0.5}>
+                                            Indochina Time (Ho Chi Minh City){' '}
+                                            <Typography textColor="text.tertiary" ml={0.5}>
                                             — GMT+07:00
-                                        </Typography>
+                                            </Typography>
                                         </Option>
-                                    </Select>
+                                        </Select>
                                     </FormControl>
-                                </div>
+                                    </div>
                                 </Stack>
-                            </Stack>
-                            <Stack
-                                direction="column"
-                                spacing={2}
-                                sx={{ display: { xs: 'flex', md: 'none' }, my: 1 }}
-                            >
-                                <Stack direction="row" spacing={2}>
-                                <Stack direction="column" spacing={1}>
-                                    <AspectRatio
-                                    ratio="1"
-                                    maxHeight={108}
-                                    sx={{ flex: 1, minWidth: 108, borderRadius: '100%' }}
-                                    >
-                                    <img
-                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                        srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                        loading="lazy"
-                                        alt=""
-                                    />
-                                    </AspectRatio>
-                                    <IconButton
-                                    aria-label="upload new picture"
-                                    size="sm"
-                                    variant="outlined"
-                                    color="neutral"
-                                    sx={{
-                                        bgcolor: 'background.body',
-                                        position: 'absolute',
-                                        zIndex: 2,
-                                        borderRadius: '50%',
-                                        left: 85,
-                                        top: 180,
-                                        boxShadow: 'sm',
-                                    }}
-                                    >
-                                    <EditRoundedIcon />
-                                    </IconButton>
-                                </Stack>
-                                <Stack spacing={1} sx={{ flexGrow: 1 }}>
-                                    <FormLabel>Name</FormLabel>
-                                    <FormControl
-                                    sx={{
-                                        display: {
-                                        sm: 'flex-column',
-                                        md: 'flex-row',
-                                        },
-                                        gap: 2,
-                                    }}
-                                    >
-                                    <Input size="sm" placeholder="First name" />
-                                    <Input size="sm" placeholder="Last name" />
-                                    </FormControl>
-                                </Stack>
-                                </Stack>
-                                <FormControl>
-                                <FormLabel>Role</FormLabel>
-                                <Input size="sm" defaultValue="UI Developer" />
-                                </FormControl>
-                                <FormControl sx={{ flexGrow: 1 }}>
-                                <FormLabel>Email</FormLabel>
-                                <Input
-                                    size="sm"
-                                    type="email"
-                                    startDecorator={<EmailRoundedIcon />}
-                                    placeholder="email"
-                                    defaultValue="siriwatk@test.com"
-                                    sx={{ flexGrow: 1 }}
-                                />
-                                </FormControl>
-                                <div>
-                                {/* <CountrySelector /> */}
-                                </div>
-                                <div>
-                                <FormControl sx={{ display: { sm: 'contents' } }}>
-                                    <FormLabel>Timezone</FormLabel>
-                                    <Select
-                                    size="sm"
-                                    startDecorator={<AccessTimeFilledRoundedIcon />}
-                                    defaultValue="1"
-                                    >
-                                    <Option value="1">
-                                        Indochina Time (Bangkok){' '}
-                                        <Typography textColor="text.tertiary" ml={0.5}>
-                                        — GMT+07:00
-                                        </Typography>
-                                    </Option>
-                                    <Option value="2">
-                                        Indochina Time (Ho Chi Minh City){' '}
-                                        <Typography textColor="text.tertiary" ml={0.5}>
-                                        — GMT+07:00
-                                        </Typography>
-                                    </Option>
-                                    </Select>
-                                </FormControl>
-                                </div>
-                            </Stack>
-                            <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
-                                <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
-                                <Button size="sm" variant="outlined" color="neutral">
-                                    Cancel
-                                </Button>
-                                <Button size="sm" variant="solid">
-                                    Save
-                                </Button>
-                                </CardActions>
-                            </CardOverflow>
+                                <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
+                                    <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+                                    <Button size="sm" variant="outlined">
+                                        Save
+                                    </Button>
+                                    </CardActions>
+                                </CardOverflow>
                             </Card>
                         </Stack>
                     </TabPanel>
@@ -276,10 +224,117 @@ export default function MyProfile() {
                     </TabPanel>
                     
                     <TabPanel value={2}>
-                        <b>Third</b> tab panel
+                        
+                        <Grid
+                        container
+                        spacing={{ xs: 2, md: 3 }}
+                        columns={{ xs: 4, sm: 8, md: 12 }}
+                        sx={{ flexGrow: 1 }}
+                        >
+                        {itemData.map((item) => (
+                            <Grid xs={12} sm={6} md={3} key={item}>
+                                <Card variant="outlined" color={item.color} sx={{ maxWidth:320 }}>
+                                    <CardContent>
+                                        <Typography level="title-md" color={item.color}>
+                                                {item.title}
+                                        </Typography>
+
+                                        <Typography level="body-sm" color={item.color}>{item.price}
+                                        </Typography>
+                                    </CardContent>
+
+                                    <CardActions>
+                                        <Typography level="title-lg" sx={{ mr: 'auto' }} color={item.color}>
+                                            {item.price}
+                                        </Typography>
+                                        {StartNow(item.price, item.color)}
+                                    </CardActions>
+                                    <CardOverflow variant="soft">
+                                        <Divider inset="context" />
+                                        <CardContent orientation="horizontal">
+                                            <Typography level="body-xs" color={item.color}>{item.subcription}</Typography>
+                                        </CardContent>
+                                    </CardOverflow>
+                                </Card>
+                            </Grid>
+
+                        ))}
+                        </Grid>
+                        <Container maxWidth="sm" sx={{pt: 8}}>
+                        <Typography level="title-lg" >
+                            History
+                        </Typography>
+                        {/* <p className="mt-2 flex items-baseline justify-center gap-x-2">
+                            <span className="text-5xl font-bold tracking-tight text-gray-900">Free</span>
+                        </p> */}
+
+                        <Table aria-label="basic table" sx={{pt: 1}}>
+                            <thead>
+                                <tr>
+                                    <th style={{ width: '40%' }}>Dessert (100g serving)</th>
+                                    <th>Calories</th>
+                                    <th>Fat&nbsp;(g)</th>
+                                    <th>Carbs&nbsp;(g)</th>
+                                    <th>Protein&nbsp;(g)</th>
+                                </tr>
+                            </thead>
+                            {tableItems.map((item) => (
+                                <><tbody>
+                                    <tr>
+                                        <td>{item.dessert}</td>
+                                        <td>{item.calories}</td>
+                                        <td>{item.fat}</td>
+                                        <td>{item.carbs}</td>
+                                        <td>{item.protein}</td>
+                                    </tr>
+                                </tbody></>
+                            ))},
+                        </Table>
+                        </Container>
                     </TabPanel>
                 </Tabs>
             </Box>
         </Box>
     );
 }
+
+const itemData = [
+    {
+      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+      title: 'FREE',
+      subcription: 'Using now',
+      price: '$0.00 p/m',
+      color:"neutral"
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+      title: 'BASIC',
+      subcription: '',
+      price: '$9.99 p/m',
+      color:"primary"
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+      title: 'GOLDEN',
+      subcription: '',
+      price: '$14.99 p/m',
+      color:"danger"
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+      title: 'ULTIMATE',
+      subcription: '',
+      price: '$100.00 once off',
+      color:"warning"
+    },
+];
+const tableItems = [
+    {
+        dessert: 'Frozen yoghurt',
+        calories: '159',
+        fat: '6',
+        carbs: '24',
+        protein: '4'
+
+    }
+];
