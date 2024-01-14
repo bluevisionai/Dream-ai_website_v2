@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
     Box, Button, Divider, FormControl, FormLabel, Input, Stack, CardContent, Grid,
     Select, Option, Typography, Tab, Tabs, TabPanel, TabList, tabClasses, Card, CardActions, CardOverflow,
-    Table,
+    Table, 
 } from '@mui/joy';
 import { Container } from '@mui/system';
 
@@ -131,16 +131,16 @@ export default function MyProfile() {
                                                 defaultValue="1"
                                             >
                                                 <Option value="1">
-                                                Indochina Time (Bangkok){' '}
-                                                <Typography textColor="text.tertiary" ml={0.5}>
-                                                    — GMT+07:00
-                                                </Typography>
+                                                    Indochina Time (Bangkok){' '}
+                                                    <Typography textColor="text.tertiary" ml={0.5}>
+                                                        — GMT+07:00
+                                                    </Typography>
                                                 </Option>
                                                 <Option value="2">
-                                                Indochina Time (Ho Chi Minh City){' '}
-                                                <Typography textColor="text.tertiary" ml={0.5}>
-                                                    — GMT+07:00
-                                                </Typography>
+                                                    Indochina Time (Ho Chi Minh City){' '}
+                                                    <Typography textColor="text.tertiary" ml={0.5}>
+                                                        — GMT+07:00
+                                                    </Typography>
                                                 </Option>
                                             </Select>
                                             </FormControl>
@@ -211,7 +211,7 @@ export default function MyProfile() {
                                 <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
                                     <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
                                     <Button size="sm" variant="outlined">
-                                        Save
+                                        Update
                                     </Button>
                                     </CardActions>
                                 </CardOverflow>
@@ -220,77 +220,130 @@ export default function MyProfile() {
                     </TabPanel>
 
                     <TabPanel value={1}>
-                        <b>Second</b> tab panel
+                        
+                        <Stack
+                            spacing={4}
+                            sx={{
+                            display: 'flex',
+                            maxWidth: '800px',
+                            mx: 'auto',
+                            px: { xs: 2, md: 6 },
+                            py: { xs: 2, md: 3 },
+                            }}
+                        >
+                            <Card>
+                                <Box sx={{ mb: 1 }}>
+                                    <Typography level="title-md">Change Password</Typography>
+                                </Box>
+                                <Divider />
+                                <Stack
+                                    direction="row"
+                                    spacing={3}
+                                    sx={{ display: { xs: 'flex', md: 'flex' }, my: 1 }}
+                                >
+                                    <Stack spacing={2} sx={{ flexGrow: 1 }}>
+                                        <div>
+                                        <Stack spacing={2}>
+                                            <FormControl sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }} >
+                                                <FormLabel>Old Password</FormLabel>
+                                                <Input size="sm" placeholder="Old Password" sx={{ flexGrow: 1 }}/>
+                                            </FormControl>
+                                            <FormControl sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }} >
+                                                <FormLabel>New Password</FormLabel>
+                                                <Input size="sm" placeholder="New Password" sx={{ flexGrow: 1 }}/>
+                                            </FormControl>
+                                            <FormControl sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }} >
+                                                <FormLabel>Confirm New Password</FormLabel>
+                                                <Input size="sm" placeholder="Confirm New Password" sx={{ flexGrow: 1 }}/>
+                                            </FormControl>
+                                        </Stack>
+                                        </div>
+                                    </Stack>
+                                </Stack>
+                                <CardOverflow sx={{ borderTop: '1px solid', borderColor: 'divider' }}>
+                                    <CardActions sx={{ alignSelf: 'flex-end', pt: 2 }}>
+                                    <Button size="sm" variant="outlined">
+                                        Change Password
+                                    </Button>
+                                    </CardActions>
+                                </CardOverflow>
+                            </Card>
+                        </Stack>
+
                     </TabPanel>
                     
                     <TabPanel value={2}>
                         
-                        <Grid
-                        container
-                        spacing={{ xs: 2, md: 3 }}
-                        columns={{ xs: 4, sm: 8, md: 12 }}
-                        sx={{ flexGrow: 1 }}
-                        >
-                        {itemData.map((item) => (
-                            <Grid xs={12} sm={6} md={3} key={item}>
-                                <Card variant="outlined" color={item.color} sx={{ maxWidth:320 }}>
-                                    <CardContent>
-                                        <Typography level="title-md" color={item.color}>
-                                                {item.title}
-                                        </Typography>
+                        <Card>
+                            <Box sx={{ mb: 1 }}>
+                                <Typography level="title-md">Change Password</Typography>
+                            </Box>
+                            <Grid
+                                container
+                                spacing={{ xs: 2, md: 3 }}
+                                columns={{ xs: 4, sm: 8, md: 12 }}
+                                sx={{ flexGrow: 1 }}
+                                >
+                                {itemData.map((item) => (
+                                    <Grid xs={12} sm={6} md={3} key={item}>
+                                        <Card variant="outlined" color={item.color} sx={{ maxWidth:320 }}>
+                                            <CardContent>
+                                                <Typography level="title-md" color={item.color}>
+                                                        {item.title}
+                                                </Typography>
 
-                                        <Typography level="body-sm" color={item.color}>{item.price}
-                                        </Typography>
-                                    </CardContent>
+                                                <Typography level="body-sm" color={item.color}>{item.price}
+                                                </Typography>
+                                            </CardContent>
 
-                                    <CardActions>
-                                        <Typography level="title-lg" sx={{ mr: 'auto' }} color={item.color}>
-                                            {item.price}
-                                        </Typography>
-                                        {StartNow(item.price, item.color)}
-                                    </CardActions>
-                                    <CardOverflow variant="soft">
-                                        <Divider inset="context" />
-                                        <CardContent orientation="horizontal">
-                                            <Typography level="body-xs" color={item.color}>{item.subcription}</Typography>
-                                        </CardContent>
-                                    </CardOverflow>
-                                </Card>
+                                            <CardActions>
+                                                <Typography level="title-lg" sx={{ mr: 'auto' }} color={item.color}>
+                                                    {item.price}
+                                                </Typography>
+                                                {StartNow(item.price, item.color)}
+                                            </CardActions>
+                                            <CardOverflow variant="soft">
+                                                <Divider inset="context" />
+                                                <CardContent orientation="horizontal">
+                                                    <Typography level="body-xs" color={item.color}>{item.subscription}</Typography>
+                                                </CardContent>
+                                            </CardOverflow>
+                                        </Card>
+                                    </Grid>
+
+                                ))}
                             </Grid>
+                            {/* </Card>
+                            <Card> */}
+                            <Container maxWidth="sm" sx={{pt: 8}}>
+                                <Typography level="title-lg" >
+                                    Previous Subscriptions
+                                </Typography>
 
-                        ))}
-                        </Grid>
-                        <Container maxWidth="sm" sx={{pt: 8}}>
-                        <Typography level="title-lg" >
-                            History
-                        </Typography>
-                        {/* <p className="mt-2 flex items-baseline justify-center gap-x-2">
-                            <span className="text-5xl font-bold tracking-tight text-gray-900">Free</span>
-                        </p> */}
-
-                        <Table aria-label="basic table" sx={{pt: 1}}>
-                            <thead>
-                                <tr>
-                                    <th style={{ width: '40%' }}>Dessert (100g serving)</th>
-                                    <th>Calories</th>
-                                    <th>Fat&nbsp;(g)</th>
-                                    <th>Carbs&nbsp;(g)</th>
-                                    <th>Protein&nbsp;(g)</th>
-                                </tr>
-                            </thead>
-                            {tableItems.map((item) => (
-                                <><tbody>
-                                    <tr>
-                                        <td>{item.dessert}</td>
-                                        <td>{item.calories}</td>
-                                        <td>{item.fat}</td>
-                                        <td>{item.carbs}</td>
-                                        <td>{item.protein}</td>
-                                    </tr>
-                                </tbody></>
-                            ))},
-                        </Table>
-                        </Container>
+                                <Table aria-label="basic table" sx={{pt: 1}}>
+                                    <thead>
+                                        <tr>
+                                            <th style={{ width: '40%' }}>Dessert (100g serving)</th>
+                                            <th>Calories</th>
+                                            <th>Fat&nbsp;(g)</th>
+                                            <th>Carbs&nbsp;(g)</th>
+                                            <th>Protein&nbsp;(g)</th>
+                                        </tr>
+                                    </thead>
+                                    {tableItems.map((item) => (
+                                        <><tbody>
+                                            <tr>
+                                                <td>{item.dessert}</td>
+                                                <td>{item.calories}</td>
+                                                <td>{item.fat}</td>
+                                                <td>{item.carbs}</td>
+                                                <td>{item.protein}</td>
+                                            </tr>
+                                        </tbody></>
+                                    ))},
+                                </Table>
+                            </Container>
+                        </Card>
                     </TabPanel>
                 </Tabs>
             </Box>
@@ -302,28 +355,28 @@ const itemData = [
     {
       img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
       title: 'FREE',
-      subcription: 'Using now',
+      subscription: 'Using now',
       price: '$0.00 p/m',
       color:"neutral"
     },
     {
       img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
       title: 'BASIC',
-      subcription: '',
+      subscription: '',
       price: '$9.99 p/m',
       color:"primary"
     },
     {
       img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
       title: 'GOLDEN',
-      subcription: '',
+      subscription: '',
       price: '$14.99 p/m',
       color:"danger"
     },
     {
       img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
       title: 'ULTIMATE',
-      subcription: '',
+      subscription: '',
       price: '$100.00 once off',
       color:"warning"
     },

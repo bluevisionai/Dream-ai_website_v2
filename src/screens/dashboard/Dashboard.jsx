@@ -1,7 +1,7 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import {List, ListItemButton} from '@mui/joy';
+import { List, ListItemButton, Avatar,Stack, Divider, Typography, } from '@mui/joy';
 
 const includedFeatures = [
 	'Total usage: 4',
@@ -96,7 +96,7 @@ export default function Landing() {
 									/>
 								</div>
 								<div className="mt-2.5">
-									<h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">Lottery Minimun and Maximum numbers</h4>
+									<h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">Lottery Minimum and Maximum numbers</h4>
 									<Box >
 										<Slider
 											aria-label="Always visible"
@@ -122,15 +122,72 @@ export default function Landing() {
 						</div>
 						<div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
 							<div className="rounded-2xl bg-gray-50 py-1 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center ">
-								<div className="mx-auto max-w-xs px-8">
-									<p className="text-base font-semibold text-gray-600">Currunt Subscription</p>
+							<Stack
+                            sx={{
+                            display: 'flex',
+                            px: { xs: 2, md: 2 },
+                            py: { xs: 2, md: 2 },
+                            }}
+                        >
+                                <Box sx={{ mb: 1 }}>
+                                    <Typography level="title-sm">Your Dream Translation</Typography>
+                                </Box>
+                                <Divider />
+                                <Stack
+                                    direction="row"
+                                    spacing={3}
+                                    sx={{ display: { xs: 'flex', md: 'flex' }, my: 1 }}
+                                >
+                                    <Stack spacing={2} >
+                                        <div>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                    		<Typography level="body-xs">Your Dream Translation</Typography>
+                                        </div>
+                                    </Stack>
+                                </Stack>
+                                <Divider />
+								<Box sx={{ mb: 1 }}>
+                                    <Typography level="title-sm">Your Lucky Numbers</Typography>
+                                </Box>
+                                <Divider />
+								<Box sx={{ display: 'flex', gap: 1, pt: 2 }}>
+									
+									<Avatar alt="lottery" color="danger" size="sm">6</Avatar>
+									<Avatar alt="lottery" color="danger" size="sm">7</Avatar>
+									<Avatar alt="lottery" color="danger" size="sm">20</Avatar>
+									<Avatar alt="lottery" color="danger" size="sm">35</Avatar>
+									<Avatar alt="lottery" color="danger" size="sm">18</Avatar>
+									<Avatar alt="lottery" color="danger" size="sm">9</Avatar>
+									<Avatar alt="lottery" color="warning" size="sm">8</Avatar>
+								</Box>
+                                   
+                        </Stack>
+								{/* <div className="mx-auto max-w-xs px-8">
+									<p className="text-base font-semibold text-gray-600">Your Dream Translation</p>
 									<p className="mt-2 flex items-baseline justify-center gap-x-2">
-									<span className="text-5xl font-bold tracking-tight text-gray-900">Free</span>
+										<h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">ai response over </h4>
 									</p>
-									<button className="mt-2 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-										UPGRADE HERE
-									</button>
 								</div>
+								<div className="mx-auto max-w-xs px-8">
+									<p className="text-base font-semibold text-gray-600">Your Lucky Numbers</p>
+									<Box sx={{ display: 'flex', gap: 1 }}>
+										<Avatar alt="lottery" color="danger" size="sm">6</Avatar>
+										<Avatar alt="lottery" color="danger" size="sm">7</Avatar>
+										<Avatar alt="lottery" color="danger" size="sm">20</Avatar>
+										<Avatar alt="lottery" color="danger" size="sm">35</Avatar>
+										<Avatar alt="lottery" color="danger" size="sm">18</Avatar>
+										<Avatar alt="lottery" color="danger" size="sm">9</Avatar>
+										<Avatar alt="lottery" color="warning" size="sm">8</Avatar>
+									</Box>
+								</div> */}
 							</div>
 						</div>
 					</div>

@@ -36,7 +36,7 @@ export default function App() {
 					<Route element={<RequireAuth  allowedRoles={[ROLES.User]}/>}>
 						<Route path="/" element={<MainLayout />}>
 							<Route index element={<Dashboard />} />
-							<Route path="History" element={<History />} />
+							<Route path="dream_dictionary" element={<History />} />
 							<Route path="products" element={<Blank />} />
 							<Route path="profile" element={<Profile />} />
 							<Route path="settings" element={<Blank />} />
