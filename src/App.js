@@ -12,8 +12,14 @@ import History from "./screens/dashboard/History";
 import Profile from "./screens/dashboard/Profile";
 import MainLayout from "./screens/dashboard/layout/MainLayout";
 import NotFound from "./screens/NotFound.js";
+import PasswordResetEmailForm from "./screens/resetPassword/PasswordReset.jsx";
+import OtpForm from "./screens/resetPassword/OtpForm.jsx";
+import PasswordChangeForm from "./screens/resetPassword/PasswordChangeForm.jsx";
+
 import RequireAuth from "./context/RequireAuth";
 import PersistLogin from "./context/PersistLogin";
+
+
 import Blank from './screens/dashboard/Blank'
 
 const ROLES = {
@@ -23,13 +29,16 @@ const ROLES = {
 
 export default function App() {
 	return (
-		<>
 		<Routes>
 			<Route path="/" element={<Layout />}>
 
 				{/* public routes */}
 				<Route path="home" element={<Landing />} />
-				{/* <Route path="unauthorized" element={<Unauthorized />} /> */}
+				
+					<Route path="reset-password/email" element={<PasswordResetEmailForm />} />
+					<Route path="reset-password/otp" element={<OtpForm />} />
+					<Route path="reset-password/change-password" element={<PasswordChangeForm />} />
+				
 
 				{/* we want to protect these routes */}
 				<Route element={<PersistLogin />}>
@@ -49,7 +58,6 @@ export default function App() {
 				<Route path="*" element={<NotFound />} />
 			</Route>
 		</Routes>
-		</>
 	);
 }
 

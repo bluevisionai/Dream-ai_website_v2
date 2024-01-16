@@ -3189,6 +3189,11 @@ ansi-styles@^6.1.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-6.2.1.tgz#0e62320cf99c21afff3b3012192546aacbfb05c5"
   integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
 
+antd-input-otp@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/antd-input-otp/-/antd-input-otp-2.0.5.tgz#cb034d0219f74ad5a715b08eb1ff515a40e32296"
+  integrity sha512-n18BmMP4fxjHmijj8RhfaDEdkAgtnwhkdkwRJDmksGCf95kFtrLjcaQhteL1pvOaCjQFv8Fjb4dAhYnUMAbwPg==
+
 antd@^5.12.8:
   version "5.12.8"
   resolved "https://registry.yarnpkg.com/antd/-/antd-5.12.8.tgz#94fea825e9bae535af7adf70417fa1f0dadc4c98"
@@ -7724,6 +7729,11 @@ optionator@^0.9.3:
     levn "^0.4.1"
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
+
+otp-input-react@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/otp-input-react/-/otp-input-react-0.3.0.tgz#47ad3485b923ea00cf0d4758b74dfeffb3d73cf8"
+  integrity sha512-6HDgAUp+biz18cfeX8189g6sOqA5UGmTeqkREz1MI8x92N8kU/M8YtwLtl60j3pbGkMVbrm3f4n4wtXPeVpMmg==
 
 p-limit@^2.0.0, p-limit@^2.2.0:
   version "2.3.0"

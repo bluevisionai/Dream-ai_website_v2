@@ -5,14 +5,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 // import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Dialog from "@material-ui/core/Dialog";
 import CircleLoader from "react-spinners/CircleLoader";
-
 import axios from '../api/axios';
 const LOGIN_URL = '/api/v1/auth/login';
 
 
 export default function SignIn() {
     const [open, setOpen] = React.useState(false);
-    const [isLoading, setLoading]=useState(false);
+    const [isLoading, setLoading] = useState(false);
 
     const handleClickToOpen = () => {
         setOpen(true);
@@ -79,6 +78,10 @@ export default function SignIn() {
         }
     }
 
+    const handlePasswordReset  = () => {
+        navigate("/reset-password/email", { replace: false });
+    }
+
     return (
         <div>
             <button  style={{ padding: "10px 15px" }}
@@ -105,60 +108,64 @@ export default function SignIn() {
                                 <CircleLoader color="#6556FF" />
                             </div>
                         ):( 
-                            <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                                <input type="hidden" name="remember" defaultValue="true" />
-                                <div className="-space-y-px rounded-md shadow-sm">
-                                    <div>
-                                        <label htmlFor="email-address" className="sr-only">
-                                            Email address
-                                        </label>
-                                        <input
-                                            id="email-address"
-                                            type="email"
-                                            autoComplete="off"
-                                            required
-                                            className="relative block w-full appearance-none rounded-none rounded-t-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Email address"
-                                            onChange={(e) => setUser(e.target.value)}
-                                            value={email}
-                                        />
+                            <>
+                                <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                                    <input type="hidden" name="remember" defaultValue="true" />
+                                    <div className="-space-y-px rounded-md shadow-sm">
+                                        <div>
+                                            <label htmlFor="email-address" className="sr-only">
+                                                Email address
+                                            </label>
+                                            <input
+                                                id="email-address"
+                                                type="email"
+                                                autoComplete="off"
+                                                required
+                                                className="relative block w-full appearance-none rounded-none rounded-t-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Email address"
+                                                onChange={(e) => setUser(e.target.value)}
+                                                value={email} />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="password" className="sr-only">
+                                                Password
+                                            </label>
+                                            <input
+                                                id="password"
+                                                type="password"
+                                                required
+                                                className="relative block w-full appearance-none rounded-none rounded-b-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Password"
+                                                onChange={(e) => setPwd(e.target.value)}
+                                                value={pwd} />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label htmlFor="password" className="sr-only">
-                                            Password
-                                        </label>
-                                        <input
-                                            id="password"
-                                            type="password"
-                                            required
-                                            className="relative block w-full appearance-none rounded-none rounded-b-md border border-grey500 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Password"
-                                            onChange={(e) => setPwd(e.target.value)}
-                                            value={pwd}
-                                        />
-                                    </div>
-                                </div>
 
+
+
+                                    <div>
+                                        <button className="home-register button group relative flex w-full justify-center rounded-md border border-transparent bg-purple py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                            Sign in
+                                        </button>
+                                    </div>
+
+                                    {errMsg && (
+                                        <div className="bg-red-500 text-red w-fit text-sm py-1 px-3 rounded-md mt-2">
+                                            {errMsg}
+                                        </div>
+                                    )}
+                                </form>
                                 <div className="flex items-center justify-between">
                                     <div className="text-sm">
-                                        <button className="font-medium text-indigo-600 hover:text-indigo-500">
+                                        <button
+                                            onClick={handlePasswordReset}
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        >
                                             Forgot your password?
                                         </button>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <button className="home-register button group relative flex w-full justify-center rounded-md border border-transparent bg-purple py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                        Sign in
-                                    </button>
-                                </div>
-
-                                {errMsg && (
-                                    <div className="bg-red-500 text-red w-fit text-sm py-1 px-3 rounded-md mt-2">
-                                    {errMsg}
-                                    </div>
-                                )}
-                            </form>
+                            </>
                         )}
                     </div>
                 </div>
