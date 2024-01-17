@@ -15,7 +15,7 @@ const isValidEmail = (email) => {
 
 export default function PasswordResetEmailForm() {
     const [email, setEmail] = useState('');
-    const [OTP, setOTP] = useState();
+    // const [OTP, setOTP] = useState();
     const [isEmailValid, setEmailValid] = useState(true);
     const [errMsg, setErrMsg] = useState('');
 
@@ -35,18 +35,18 @@ export default function PasswordResetEmailForm() {
         if (isEmailValid) {
             const otp = Math.floor(100000 + Math.random() * 900000);
             console.log(otp);
-            setOTP(otp);
+            // setOTP(otp);
 
             try {
-                console.log(OTP);
+                console.log(otp);
                 await axios.post('/api/v1/auth/send_recovery_email',
-                    JSON.stringify({ email, OTP }),
+                    JSON.stringify({ email, otp }),
                     {
                         headers: { 'Content-Type': 'application/json' },
                         withCredentials: true
                     }
                 )
-                .then(() => navigate('/reset-password/otp', { replace: false, state: { email:email, otp:OTP } }))
+                .then(() => navigate('/reset-password/otp', { replace: false, state: { email:email, otp:otp } }))
                 .catch(console.log);
             } catch(error) {
                 if (!error?.response) {
