@@ -39,7 +39,7 @@ export default function PasswordResetEmailForm() {
 
             try {
                 console.log(otp);
-                await axios.post('/api/v1/auth/send_recovery_email',
+                await axios.post('/api/v1/auth/password_reset',
                     JSON.stringify({ email, otp }),
                     {
                         headers: { 'Content-Type': 'application/json' },
@@ -60,7 +60,7 @@ export default function PasswordResetEmailForm() {
                 setErrMsg(error.response?.message);
             }
 
-            // navigate('/reset-password/otp', { replace: false, state: { email:email, otp:otp } });
+            navigate('/reset-password/otp', { replace: false, state: { email:email, otp:otp } });
             
         } else {
             setErrMsg('Invalid Email');

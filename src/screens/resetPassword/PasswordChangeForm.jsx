@@ -40,8 +40,8 @@ export default function PasswordChangeForm() {
 	}
 
 	try {
-		await axios.patch('/api/v1/auth/update-password',
-			JSON.stringify({ email }),
+		await axios.patch('/api/v1/auth/password_reset',
+			JSON.stringify({ email, pwd }),
 			{
 				headers: { 'Content-Type': 'application/json' },
 				withCredentials: true
