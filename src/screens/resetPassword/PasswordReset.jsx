@@ -60,7 +60,7 @@ export default function PasswordResetEmailForm() {
                 setErrMsg(error.response?.message);
             }
 
-            navigate('/reset-password/otp', { replace: false, state: { email:email, otp:otp } });
+            // navigate('/reset-password/otp', { replace: false, state: { email:email, otp:otp } });
             
         } else {
             setErrMsg('Invalid Email');

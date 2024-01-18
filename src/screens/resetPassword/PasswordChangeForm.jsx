@@ -56,11 +56,6 @@ export default function PasswordChangeForm() {
 		if (!error?.response) {
 			setErrMsg('No Server Response');
 		} 
-		// else if (error.response?.status === 409) {
-		// 	setErrMsg('Email is already in use.');
-		// } else {
-		// 	setErrMsg('Registration Failed')
-		// }
 		setErrMsg(error.response?.message);
 		errRef.current?.focus();
 	}
